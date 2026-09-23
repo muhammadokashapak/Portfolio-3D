@@ -113,11 +113,14 @@ html, body, #root {
   width: 100%;
   max-width: 100vw;
   min-height: 100%;
-  overflow-x: hidden !important;
   scroll-behavior: smooth;
   background-color: var(--bg-color);
   transition: background-color 0.4s ease, color 0.4s ease;
   position: relative;
+}
+
+body {
+  overflow-x: clip;
 }
 
 body {
@@ -1449,4 +1452,85 @@ body.rtl-layout .nav-links {
   flex-direction: row-reverse;
 }
 
+/* ==========================================================================
+   INTERACTIVE MULTI-LANGUAGE GREETING & HERO IMAGE ANIMATIONS
+   ========================================================================== */
 
+@keyframes greetingVanishing {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+    filter: blur(4px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  82% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.92);
+    filter: blur(4px);
+  }
+}
+
+.animate-greeting-vanish {
+  animation: greetingVanishing 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroCardFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+.animate-hero-float {
+  animation: heroCardFloat 6s ease-in-out infinite;
+}
+
+@keyframes lightSweepEffect {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  100% {
+    transform: translateX(300%) skewX(-25deg);
+  }
+}
+
+.animate-light-sweep {
+  animation: lightSweepEffect 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes rotatingNeonBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-neon {
+  animation: rotatingNeonBorder 8s linear infinite;
+}
+
+@keyframes greetingProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-greeting-progress {
+  animation: greetingProgress 1.15s linear infinite;
+}
